@@ -4,7 +4,7 @@ Theme URI: http://wordpress.org/themes/twentythirteen
 Author: the WordPress team
 Author URI: http://wordpress.org/
 Description: The 2013 theme for WordPress takes us back to the blog, featuring a full range of post formats, each displayed beautifully in their own unique way. Design details abound, starting with a vibrant color scheme and matching header images, beautiful typography and icons, and a flexible layout that looks great on any device, big or small.
-Version: 1.2
+Version: 1.1
 License: GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Tags: black, brown, orange, tan, white, yellow, light, one-column, two-columns, right-sidebar, fluid-layout, responsive-layout, custom-header, custom-menu, editor-style, featured-images, microformats, post-formats, rtl-language-support, sticky-post, translation-ready
@@ -678,7 +678,9 @@ img.size-full,
 img.size-large,
 img.wp-post-image {
 	height: auto;
+  width: auto;
 	max-width: 100%;
+  max-height: 500px;
 }
 
 /* Make sure videos and embeds fit their containers. */
@@ -709,7 +711,6 @@ video {
 	margin-right: auto;
 }
 
-figure.wp-caption.alignleft,
 img.alignleft {
 	margin: 5px 20px 5px 0;
 }
@@ -718,7 +719,6 @@ img.alignleft {
 	margin: 5px 10px 5px 0;
 }
 
-figure.wp-caption.alignright,
 img.alignright {
 	margin: 5px 0 5px 20px;
 }
@@ -742,15 +742,6 @@ img.alignnone {
 	font-size: 18px;
 	font-style: italic;
 	font-weight: 300;
-	margin: 0 0 24px;
-}
-
-div.wp-caption.alignright img[class*="wp-image-"] {
-	float: right;
-}
-
-div.wp-caption.alignright .wp-caption-text {
-	padding-left: 10px;
 }
 
 img.wp-smiley,
@@ -764,7 +755,7 @@ img.wp-smiley,
 }
 
 .wp-caption.alignleft + ul,
-.wp-caption.alignleft + ol {
+.wp-caption.alignleft + ol  {
 	list-style-position: inside;
 }
 
@@ -878,9 +869,7 @@ div.nav-menu > ul {
 }
 
 .nav-menu li:hover > a,
-.nav-menu li a:hover,
-.nav-menu li:focus > a,
-.nav-menu li a:focus {
+.nav-menu li a:hover {
 	background-color: #220e10;
 	color: #fff;
 }
@@ -890,14 +879,11 @@ div.nav-menu > ul {
 	background-color: #220e10;
 	border: 2px solid #f7f5e7;
 	border-top: 0;
+	display: none;
 	padding: 0;
 	position: absolute;
 	left: -2px;
 	z-index: 99999;
-	height: 1px;
-	width: 1px;
-	overflow: hidden;
-	clip: rect(1px, 1px, 1px, 1px);
 }
 
 .nav-menu .sub-menu ul,
@@ -915,20 +901,13 @@ ul.nav-menu ul a,
 }
 
 ul.nav-menu ul a:hover,
-.nav-menu ul ul a:hover,
-ul.nav-menu ul a:focus,
-.nav-menu ul ul a:focus {
+.nav-menu ul ul a:hover {
 	background-color: #db572f;
 }
 
 ul.nav-menu li:hover > ul,
-.nav-menu ul li:hover > ul,
-ul.nav-menu .focus > ul,
-.nav-menu .focus > ul {
-	clip: inherit;
-	overflow: inherit;
-	height: inherit;
-	width: inherit;
+.nav-menu ul li:hover > ul {
+	display: block;
 }
 
 .nav-menu .current_page_item > a,
@@ -946,7 +925,7 @@ ul.nav-menu .focus > ul,
 /* Navbar */
 .navbar {
 	background-color: #f7f5e7;
-	margin: 0 auto;
+	margin: 0 auto !important;
 	max-width: 1600px;
 	width: 100%;
 }
@@ -989,7 +968,7 @@ ul.nav-menu .focus > ul,
  */
 
 .hentry {
-	padding: 40px 0;
+	padding: 10px 0;
 }
 
 .entry-header,
@@ -997,8 +976,8 @@ ul.nav-menu .focus > ul,
 .entry-summary,
 .entry-meta {
 	margin: 0 auto;
-	max-width: 604px;
 	width: 100%;
+  padding: 0px 10px;
 }
 
 .sidebar .entry-header,
@@ -1019,17 +998,23 @@ ul.nav-menu .focus > ul,
 	padding: 0;
 }
 
+.entry-thumbnail {
+  text-align: center;
+}
+
 .entry-thumbnail img {
-	display: block;
 	margin: 0 auto 10px;
 }
 
 .entry-header {
-	margin-bottom: 30px;
+	margin-bottom: 20px;
+  border-bottom: 1px solid #cccccc;
 }
 
 .entry-title {
-	font-weight: normal;
+  font-family: "Helvetica Neue Bold", Helvetica, Lucida, Arial, sans-serif;
+	font-weight: bold;
+  font-size: 22px;
 	margin: 0 0 5px;
 }
 
@@ -1322,13 +1307,6 @@ footer.entry-meta {
 .gallery-columns-8 .gallery-item:nth-of-type(8n),
 .gallery-columns-9 .gallery-item:nth-of-type(9n) {
 	margin-right: 0;
-}
-
-.gallery-columns-1.gallery-size-medium figure.gallery-item:nth-of-type(1n+1),
-.gallery-columns-1.gallery-size-thumbnail figure.gallery-item:nth-of-type(1n+1),
-.gallery-columns-2.gallery-size-thumbnail figure.gallery-item:nth-of-type(2n+1),
-.gallery-columns-3.gallery-size-thumbnail figure.gallery-item:nth-of-type(3n+1) {
-	clear: left;
 }
 
 .gallery-caption {
@@ -1855,18 +1833,6 @@ footer.entry-meta {
 	display: none;
 }
 
-.attachment .entry-content .mejs-audio {
-	max-width: 400px;
-	margin: 0 auto;
-}
-
-.attachment .entry-content .wp-video {
-	margin: 0 auto;
-}
-
-.attachment .entry-content .mejs-container {
-	margin-bottom: 24px;
-}
 
 /**
  * 5.7 Post/Paging Navigation
@@ -1890,9 +1856,12 @@ footer.entry-meta {
 	text-decoration: none;
 }
 
-.paging-navigation {
-	background-color: #e8e5ce;
-	padding: 40px 0;
+.paging-navigation .alert-warning {
+	padding: 10px 20px;
+}
+
+.paging-navigation .glyphicon {
+  top: 3px;
 }
 
 .paging-navigation .nav-links {
@@ -1907,7 +1876,6 @@ footer.entry-meta {
 }
 
 .paging-navigation .nav-next {
-	padding: 13px 0;
 }
 
 .paging-navigation a {
@@ -2082,21 +2050,29 @@ footer.entry-meta {
 
 .error404 .page-header {
 	background-color: #fff;
+  height: 300px;
 }
 
 .error404 .page-title {
 	line-height: 0.6;
 	margin: 0;
-	padding: 300px;
 	position: relative;
 	text-align: center;
 	width: auto;
 }
 
+.error404 .error404-text {
+  filter: alpha(opacity=40);
+  position: absolute; 
+  z-index: 100;
+  top: 100px; left: 83px;
+  opacity: 0.4;
+}
+
 .error404 .page-title:before {
 	color: #e8e5ce;
 	content: "\f423";
-	font-size: 964px;
+	font-size: 500px;
 	line-height: 0.6;
 	overflow: hidden;
 	position: absolute;
@@ -3176,4 +3152,80 @@ footer.entry-meta {
 	.comment-reply-login {
 		color: #333;
 	}
+}
+
+
+.uiBox {
+-webkit-border-radius: 4px;
+-moz-border-radius: 4px;
+border-radius: 4px;
+-webkit-box-shadow: 0px 2px 4px -1px rgba(35, 44, 48, 0.18);
+-moz-box-shadow: 0px 2px 4px -1px rgba(35, 44, 48, 0.18);
+box-shadow: 0px 2px 4px -1px rgba(35, 44, 48, 0.18);
+border: 1px solid #cccccc;
+background: #ffffff;
+margin: 0 0 20px 0;
+}
+.uiBox .title {
+background-color: #f0f0f0;
+border-bottom: 1px solid #cccccc;
+-webkit-box-shadow: 0 1px 2px rgba(13, 13, 13, 0.2);
+-moz-box-shadow: 0 1px 2px rgba(13, 13, 13, 0.2);
+box-shadow: 0 1px 2px rgba(13, 13, 13, 0.2);
+-webkit-border-radius: 4px 4px 0 0;
+-moz-border-radius: 4px 4px 0 0;
+border-radius: 4px 4px 0 0;
+padding: 8px 10px;
+line-height: 20px;
+margin: 0;
+word-wrap: break-word;
+}
+.uiBox .title .actionIcon {
+margin: -3px 0;
+}
+.uiBox .uiContentBox {
+padding: 20px;
+}
+.uiBox.roundedBottom {
+-webkit-border-radius: 0 0 4px 4px;
+-moz-border-radius: 0 0 4px 4px;
+border-radius: 0 0 4px 4px;
+}
+.uiBox.roundedBottom .title {
+-webkit-border-radius: 0;
+-moz-border-radius: 0;
+border-radius: 0;
+}
+.uiBox.roundedTop {
+-webkit-border-radius: 4px 4px 0 0;
+-moz-border-radius: 4px 4px 0 0;
+border-radius: 4px 4px 0 0;
+}
+.uiBox.uiGrayLightBox {
+background: #f0f0f0;
+}
+.uiBox.noRounded {
+-webkit-border-radius: 0;
+-moz-border-radius: 0;
+border-radius: 0;
+}
+.uiBox.noRounded .title {
+-webkit-border-radius: 0;
+-moz-border-radius: 0;
+border-radius: 0;
+}
+.uiBox .uiActionBorder {
+margin: 0px -20px;
+}
+.uiBox .uiPopup .uiActionBorder {
+margin: 10px -10px;
+}
+.uiBox .tab-content .uiActionBorder {
+margin: 10px -10px;
+}
+.uiBox > .uiTrees {
+border: none;
+-webkit-border-radius: 0 0 3px 3px;
+-moz-border-radius: 0 0 3px 3px;
+border-radius: 0 0 3px 3px;
 }
