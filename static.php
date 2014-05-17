@@ -34,8 +34,8 @@ while($info=mysql_fetch_array($result))  {
      $item .= ', "publishdate":' .'"'. $info['publishdate'] . '"';
      $item .= ', "title":' .'"'. $info['title'] . '"';
      $item .= ', "parentid":' .'"'. $info['parentid'] . '"';
-     
      $item .= ', "urlident":' .'"'. $info['urlident'] . '"';
+     $item .= ', "displayorder":' .'"'. $info['displayorder'] . '"';
      $item .= '}';
      if(!$f) {
        $data .= ',';

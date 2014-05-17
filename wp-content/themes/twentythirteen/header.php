@@ -10,7 +10,7 @@
  */
 ?>
 
-<?php include 'begin_caching.php'; ?>
+<?php// include 'begin_caching.php'; ?>
 
 <!DOCTYPE html>
 <!--[if IE 7]>

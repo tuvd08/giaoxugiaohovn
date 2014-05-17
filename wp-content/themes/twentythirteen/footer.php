@@ -41,4 +41,4 @@
 </body>
 </html>
 
-<?php include 'end_caching.php'; ?>
+<?php// include 'end_caching.php'; ?>
